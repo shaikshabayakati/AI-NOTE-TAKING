@@ -9,28 +9,38 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 const Dashboard = () => {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const router = useRouter();
 
+  // Only run the query when user is loaded and has email
   const fileList = useQuery(
     api.fileupload.GetUserData,
-    user?.primaryEmailAddress?.emailAddress
-      ? { createdBy: user.primaryEmailAddress.emailAddress } // Remove v.optional
-      : undefined
+    isLoaded && user?.primaryEmailAddress?.emailAddress
+      ? { createdBy: user.primaryEmailAddress.emailAddress }
+      : "skip"
   );
   console.log(fileList);
 
   useEffect(() => {
-    if (!user) {
+    if (isLoaded && !user) {
       router.push("/auth/sign-in");
     }
-  }, [user, router]);
+  }, [user, router, isLoaded]);
+
+  // Show loading state while user is being loaded
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
       <h2 className="font-bold text-2xl">Workspace</h2>
       <div className="flex gap-5">
-        {fileList ? (
+        {fileList === undefined ? (
+          <h1>Loading files...</h1>
+        ) : fileList.length === 0 ? (
+          <h1>No files found yet</h1>
+        ) : (
           fileList.map((x) => (
             <div
               className="flex mt-15 flex-col w-55 hover:bg-blue-100 rounded-xl text-center border-6 p-5 justify-between items-center"
@@ -48,8 +58,6 @@ const Dashboard = () => {
               </Link>
             </div>
           ))
-        ) : (
-          <h1>No file found Yet</h1>
         )}
       </div>
     </div>
