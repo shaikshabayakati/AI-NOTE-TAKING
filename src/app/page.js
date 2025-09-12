@@ -108,9 +108,9 @@ function App() {
             
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-              <button className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors">
+              <Link href="/dashboard"><button className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors">
                 Make Notes
-              </button>
+              </button></Link>
             </div>
 
             <button 
