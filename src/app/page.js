@@ -160,7 +160,7 @@ function App() {
                 <span>Start Making Notes</span>
                 <ArrowRight className="w-5 h-5" />
               </button></Link>}
-             <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1"><button className="border border-gray-600 hover:border-gray-400 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:bg-gray-900">
+             <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank" rel="noopener noreferrer"><button className="border border-gray-600 hover:border-gray-400 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:bg-gray-900">
                 Watch Demo
               </button></Link> 
             </div>
