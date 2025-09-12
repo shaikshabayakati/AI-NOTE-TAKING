@@ -16,14 +16,7 @@ const Sidebar = () => {
       <div className='flex flex-col justify-center '>
         <UploadDialog>
        </UploadDialog>
-        <div className='flex p-3 cursor-pointer rounded-lg gap-2 item-center text-xl hover:bg-slate-100 justify-center mt-7'>
-          <LayoutPanelTop></LayoutPanelTop>
-          <h2>Workspace</h2>
-        </div>
-        <div className='flex p-3 cursor-pointer rounded-lg gap-2 item-center text-xl hover:bg-slate-100 justify-center mt-3'>
-          <Boxes></Boxes>
-          <h2>Upgrade</h2>
-        </div>
+       
 
       
       </div>
