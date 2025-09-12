@@ -2,13 +2,15 @@
 
 import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Dashboard = () => {
   const { user } = useUser();
+  const router = useRouter();
 
   const fileList = useQuery(
     api.fileupload.GetUserData,
@@ -17,6 +19,12 @@ const Dashboard = () => {
       : undefined
   );
   console.log(fileList);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/auth/sign-in");
+    }
+  }, [user, router]);
 
   return (
     <div>

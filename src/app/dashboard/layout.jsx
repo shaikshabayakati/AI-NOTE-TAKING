@@ -16,7 +16,7 @@ const DashboardLayout = ({children}) => {
         <Sidebar/>
       </div>
       <div className='md:ml-74'>
-        <Header></Header>
+       
         <div className='p-12'>
         {children}
         <Toaster/>

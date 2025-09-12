@@ -1,3 +1,4 @@
+"use client"
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Boxes, LayoutPanelTop } from 'lucide-react'
@@ -5,8 +6,10 @@ import Image from 'next/image'
 import React from 'react'
 import UploadDialog from './dialog'
 import Link from 'next/link'
+import { UserButton, useUser } from '@clerk/nextjs'
 
 const Sidebar = () => {
+  const {user} = useUser()
   return (
     <div className='h-screen p-7 '>
       <Link href="/"><Image className="" src="/logo.svg" height={250} width={252} alt='logo'/></Link>
@@ -24,10 +27,9 @@ const Sidebar = () => {
 
       
       </div>
-      <div className='absolute bottom-22 w-[80%] p-3'>
-      <Progress value={33}></Progress>
-      <p className=' text-sm mt-1 text-center '>2 Out Of 5 PDF'S Uploaded</p>
-      <p className='text-sm mt-1 text-gray-500 text-center'>Upgrade To Use More</p>
+      <div className='absolute bottom-22 flex gap-5 w-[80%] p-3'>
+         <UserButton/>
+         <p>{user?user.fullName:null}</p>
       </div>
     </div>
   )
