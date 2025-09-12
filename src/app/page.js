@@ -212,7 +212,7 @@ function App() {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <Brain className="w-8 h-8 text-purple-400" />
-                <span className="text-xl font-bold">NoteAI</span>
+                <span className="text-xl font-bold">SailorNotes</span>
               </div>
               <p className="text-gray-400 mb-4">
                 Empowering minds with AI-driven note-taking and intelligent insights.
@@ -233,7 +233,7 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 NoteAI. All rights reserved.</p>
+            <p>&copy; 2025 SailorNotes. All rights reserved.</p>
           </div>
         </div>
       </footer>
