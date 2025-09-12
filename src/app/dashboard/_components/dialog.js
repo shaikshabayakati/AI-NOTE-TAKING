@@ -24,7 +24,7 @@ import { Embeddings } from "@langchain/core/embeddings";
 const UploadDialog = ({ children }) => {
   const generateUploadUrl = useMutation(api.fileupload.generateUploadUrl);
   const [file, setfile] = useState();
-  const [open,setopen] = useState()
+  const [open, setopen] = useState(false);
   const AddFileEntryDB = useMutation(api.fileupload.AddFileEntryDB);
   const { user } = useUser();
   const [fileName, setFileName] = useState();
@@ -65,19 +65,19 @@ const UploadDialog = ({ children }) => {
     if (loading === false) {
       toast("✅ File has been uploaded");
     }
-    setopen(false)
+    setopen(false);
   };
-
 
   return (
     <div>
-      <Dialog open={open}>
+      <Dialog open={open} onOpenChange={setopen}>
         <DialogTrigger asChild>
-          
-            <Button onClick={()=>setopen(true)} className="cursor-pointer p-5 w-full">
-              <span className="text-2xl ">+</span>Upload PDF
-            </Button>
-          
+          <Button
+            onClick={() => setopen(true)}
+            className="cursor-pointer p-5 w-full"
+          >
+            <span className="text-2xl ">+</span>Upload PDF
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
