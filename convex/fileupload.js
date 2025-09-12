@@ -32,19 +32,17 @@ export const AddFileEntryDB = mutation({
 });
 
 export const AddnotestoDB = mutation({
-  args:{
-    notes:v.string(),
-    fileId:v.string()
+  args: {
+    notes: v.string(),
+    fileId: v.string(),
   },
-  handler:async(ctx,args)=>{
-    await ctx.db.insert("notes",{
-      notes:args.notes,
-      fileId:args.fileId
-    })
-  }
-})
-
-
+  handler: async (ctx, args) => {
+    await ctx.db.insert("notes", {
+      notes: args.notes,
+      fileId: args.fileId,
+    });
+  },
+});
 
 export const GetUrl = mutation({
   args: {
@@ -63,7 +61,7 @@ export const Getfilefromquery = query({
   },
   handler: async (ctx, args) => {
     const result = await ctx.db
-      .query('pdfFiles')
+      .query("pdfFiles")
       .filter((q) => q.eq(q.field("fileId"), args.fileId)) // fixed filter
       .collect();
     return result;
@@ -73,14 +71,14 @@ export const Getfilefromquery = query({
 // convex/fileupload.js - KEEP THIS VERSION
 export const GetUserData = query({
   args: {
-    // This is correct! It enforces that you MUST receive a string.
-    createdBy: v.string()
+    createdBy: v.string(),
   },
   handler: async (ctx, args) => {
-    const result = await ctx.db.query('pdfFiles')
-      .filter((q) => q.eq(q.field('createdBy'), args.createdBy))
+    const result = await ctx.db
+      .query("pdfFiles")
+      .filter((q) => q.eq(q.field("createdBy"), args.createdBy))
       .collect();
-  
+
     return result;
-  }
+  },
 });
