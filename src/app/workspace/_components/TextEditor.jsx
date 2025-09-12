@@ -3,6 +3,7 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Heading from '@tiptap/extension-heading'
 import Editorextensions from './Editorextensions'
+import { StarsIcon } from 'lucide-react'
 
 const TextEditor = () => {
   const editor = useEditor({
@@ -14,10 +15,11 @@ const TextEditor = () => {
     ],
 
 
-    content: '<p>Ask Away 🌎️</p>',
+    content: `<p>select the text you want to ask your question and click on the ai icon ${  <StarsIcon/>}</p>`,
     editorProps: {
       attributes: {
         class: 'focus:outline-none h-screen p-3'
+      
       }
     }
   })
