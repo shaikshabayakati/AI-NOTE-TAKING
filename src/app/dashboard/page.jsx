@@ -7,6 +7,7 @@ import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const Dashboard = () => {
   const { user, isLoaded } = useUser();
@@ -40,7 +41,8 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+        <ThemeToggle />
+          <h1 className="text-4xl font-bold text-gray-900 mt-15 dark:text-white mb-2">
             My Workspace
           </h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg">

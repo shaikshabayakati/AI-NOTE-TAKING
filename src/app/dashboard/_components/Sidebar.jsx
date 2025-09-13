@@ -33,7 +33,7 @@ const Sidebar = () => {
           </p>
         </div>
         <div className="flex justify-center">
-          <ThemeToggle />
+          
         </div>
       </div>
     </div>
