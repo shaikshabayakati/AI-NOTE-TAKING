@@ -15,7 +15,7 @@ const TextEditor = () => {
     ],
 
 
-    content: `<p>select the text you want to ask your question and click on the ai icon ${  <StarsIcon/>}</p>`,
+    content: `<p>Type your question and select the text and click on the ai icon</p>`,
     editorProps: {
       attributes: {
         class: 'focus:outline-none h-screen p-3'
