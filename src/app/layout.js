@@ -2,6 +2,7 @@ import "./globals.css";
 import { Outfit } from "next/font/google";
 import Proivder from "./proivder";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "next-themes";
 export const metadata = {
   title: "sailornotes",
   icons: {
@@ -14,9 +15,16 @@ const outfit = Outfit({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={outfit.className}>
-          <Proivder>{children}</Proivder>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Proivder>{children}</Proivder>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

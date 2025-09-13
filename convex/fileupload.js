@@ -30,6 +30,44 @@ export const AddFileEntryDB = mutation({
     });
   },
 });
+export const DeleteFileEntryDB = mutation({
+  args: {
+    fileId: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // Find the document by fileId first
+    const fileDoc = await ctx.db
+      .query("pdfFiles")
+      .filter((q) => q.eq(q.field("fileId"), args.fileId))
+      .first();
+
+    if (fileDoc) {
+      // Delete the PDF file document
+      await ctx.db.delete(fileDoc._id);
+    }
+
+    // Delete all vector embeddings for this file
+    const vectorDocs = await ctx.db
+      .query("documents")
+      .filter((q) => q.eq(q.field("metadata").fileId, args.fileId))
+      .collect();
+
+    // Delete each vector embedding document
+    for (const vectorDoc of vectorDocs) {
+      await ctx.db.delete(vectorDoc._id);
+    }
+
+    // Also delete any notes associated with this file
+    const notesDocs = await ctx.db
+      .query("notes")
+      .filter((q) => q.eq(q.field("fileId"), args.fileId))
+      .collect();
+
+    for (const noteDoc of notesDocs) {
+      await ctx.db.delete(noteDoc._id);
+    }
+  },
+});
 
 export const AddnotestoDB = mutation({
   args: {

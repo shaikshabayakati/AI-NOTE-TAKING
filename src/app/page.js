@@ -31,11 +31,12 @@
 import React, { useState, useEffect } from 'react';
 import { Brain, FileText, Zap, Shield, ArrowRight, Menu, X, Star, Users, Clock, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { UserButton, useUser } from '@clerk/nextjs';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-
+  const {user} = useUser()
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
@@ -119,6 +120,7 @@ function App() {
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+           {user? <UserButton/>:null}
           </div>
         </div>
 
