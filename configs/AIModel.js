@@ -29,7 +29,7 @@ export async function main(prompt) {
     contents: [
       {
         role: 'user', // The role of the content (e.g., 'user', 'model', 'function')
-        parts: [{ text: prompt || '' }], // An array of parts, containing your text
+        parts: [{ text: `${prompt} if the data is insufficient work with the info you have and construtuct a nice answer but if the you find zero finding then just infrom to the user the no such data or you are capable of doing that shit` || '' }], // An array of parts, containing your text
       },
     ],
   });
