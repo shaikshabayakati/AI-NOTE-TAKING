@@ -16,7 +16,6 @@ const Dashboard = () => {
   const DeleteFile = async (fileId) => {
     await DeleteFileEntryDB({ fileId });
   };
-  // Only run the query when user is loaded and has email
   const fileList = useQuery(
     api.fileupload.GetUserData,
     isLoaded && user?.primaryEmailAddress?.emailAddress
@@ -31,7 +30,7 @@ const Dashboard = () => {
     }
   }, [user, router, isLoaded]);
 
-  // Show loading state while user is being loaded
+ 
   if (!isLoaded) {
     return <div>Loading...</div>;
   }

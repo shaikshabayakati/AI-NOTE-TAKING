@@ -15,10 +15,11 @@ const TextEditor = () => {
     ],
 
 
-    content: `<p>Type your question and select the text and click on the ai icon</p>`,
+    content: `<p>Type your question and select the text and click on the ai icon Note:you cant use this to summerize entire pdf, you can use it to get information from the pdf</p>`,
     editorProps: {
       attributes: {
         class: 'focus:outline-none h-screen p-3'
+        
       
       }
     }
